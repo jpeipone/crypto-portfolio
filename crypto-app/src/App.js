@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Homepage from "./pages/Homepage";
 import Coin from "./pages/Coin";
+import { Button } from "@mui/material";
+import { AccessAlarmIcon } from "@mui/icons-material";
 
 //https://www.youtube.com/watch?v=QA6oTpMZp84
 
@@ -17,6 +19,9 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/coins/:id" element={<Coin />} />
         </Routes>
+        <Button variant="text">Text</Button>
+        <Button variant="contained">Contained</Button>
+        <Button variant="outlined">Outlined</Button>
       </div>
     </Router>
   );
