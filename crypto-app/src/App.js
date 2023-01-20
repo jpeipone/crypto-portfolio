@@ -1,6 +1,7 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
+import CoinRow from "./components/CoinRow";
 import Homepage from "./pages/Homepage";
 import Coin from "./pages/Coin";
 import { Button } from "@mui/material";
@@ -10,11 +11,14 @@ import { AccessAlarmIcon } from "@mui/icons-material";
 
 //https://www.youtube.com/watch?v=fzxEECHnsvU
 
+//https://www.youtube.com/watch?v=0sY4fUi5dMM
+
 function App() {
   return (
     <Router>
       <div>
         <Header />
+        <CoinRow />
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/coins/:id" element={<Coin />} />

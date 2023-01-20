@@ -1,0 +1,16 @@
+.coinRow-container {
+  display: flex;
+}
+
+.coins-row {
+  display: flex;
+  align-items: center;
+  padding: 1em;
+}
+
+.coins__image {
+  height: 2em;
+}
+.coins__name {
+  font-size: 1em;
+}
