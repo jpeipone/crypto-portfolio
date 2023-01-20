@@ -2,12 +2,13 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import CoinRow from "./components/CoinRow";
+import Table from "./components/Table";
 import Homepage from "./pages/Homepage";
 import Coin from "./pages/Coin";
 import { Button } from "@mui/material";
 import { AccessAlarmIcon } from "@mui/icons-material";
 import CoinTable from "./components/CoinTable";
-
+import Navbar from "./components/Navbar/Navbar";
 //https://www.youtube.com/watch?v=QA6oTpMZp84
 
 //https://www.youtube.com/watch?v=fzxEECHnsvU
@@ -18,8 +19,9 @@ function App() {
   return (
     <Router>
       <div>
+        <Navbar />
         <Header />
-        <CoinTable />
+        <Table />
         <Routes>
           <Route path="/" element={<CoinRow />} />
           <Route path="/coins/:id" element={<Coin />} />

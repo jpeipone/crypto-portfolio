@@ -1,0 +1,9 @@
+.navbar-container {
+  height: 100px;
+  background-color: green;
+}
+
+nav {
+  color: black;
+  margin-left: 2em;
+}

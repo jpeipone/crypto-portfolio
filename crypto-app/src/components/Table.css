@@ -1,0 +1,27 @@
+table {
+  margin-left: 1em;
+  background-color: white;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  text-align: left;
+  border-color: black;
+  font-weight: bold;
+  font-size: 1em;
+
+  padding: 1em;
+}
+
+tr:nth-child(even) {
+  background-color: lightgray;
+}
+
+.redday {
+  color: red;
+}
+
+.greenday {
+  color: green;
+}
