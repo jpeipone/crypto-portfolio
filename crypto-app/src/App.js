@@ -6,6 +6,7 @@ import Homepage from "./pages/Homepage";
 import Coin from "./pages/Coin";
 import { Button } from "@mui/material";
 import { AccessAlarmIcon } from "@mui/icons-material";
+import CoinTable from "./components/CoinTable";
 
 //https://www.youtube.com/watch?v=QA6oTpMZp84
 
@@ -18,9 +19,9 @@ function App() {
     <Router>
       <div>
         <Header />
-        <CoinRow />
+        <CoinTable />
         <Routes>
-          <Route path="/" element={<Homepage />} />
+          <Route path="/" element={<CoinRow />} />
           <Route path="/coins/:id" element={<Coin />} />
         </Routes>
         <Button variant="text">Text</Button>

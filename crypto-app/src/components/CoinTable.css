@@ -1,0 +1,16 @@
+.table__row {
+  display: flex;
+  align-items: center;
+  border-bottom-color: black;
+  font-weight: bold;
+  padding: 1em;
+}
+
+.coin__image {
+  height: 50px;
+}
+
+.table__name {
+  color: black;
+  font-size: 2em;
+}
