@@ -1,9 +1,26 @@
 .navbar-container {
   height: 100px;
-  background-color: green;
+  width: 100%;
+  background-color: lightgray;
+  display: flex;
+  align-items: center;
+  z-index: 9000;
+  position: relative;
+  justify-content: space-between;
 }
 
-nav {
+a {
+  text-decoration: none;
   color: black;
-  margin-left: 2em;
+  font-weight: bold;
+}
+
+.navbar-logo {
+  margin-left: 1em;
+}
+
+.navbar-link {
+  font-size: 1.5em;
+  margin-right: 1em;
+  cursor: pointer;
 }

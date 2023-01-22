@@ -17,20 +17,21 @@ import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   return (
-    <Router>
-      <div>
+    <div>
+      <Router>
         <Navbar />
         <Header />
-        <Table />
         <Routes>
-          <Route path="/" element={<CoinRow />} />
+          <Route path="/" element={<Table />} />
+          <Route path="/about" element={<CoinRow />} />
+          <Route path="/portfolio" element={<Coin />} />
           <Route path="/coins/:id" element={<Coin />} />
         </Routes>
-        <Button variant="text">Text</Button>
+        {/*     <Button variant="text">Text</Button>
         <Button variant="contained">Contained</Button>
-        <Button variant="outlined">Outlined</Button>
-      </div>
-    </Router>
+        <Button variant="outlined">Outlined</Button> */}
+      </Router>
+    </div>
   );
 }
 
