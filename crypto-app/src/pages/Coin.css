@@ -1,3 +1,18 @@
 .coin-container {
-  width: 750px;
+  padding: 1em;
+  width: 100%;
+  display: flex;
+}
+
+.coin-pricechart {
+  width: 700px;
+}
+
+.coin-info {
+  padding: 1em;
+}
+
+.coin__name {
+  font-size: 2em;
+  font-weight: bold;
 }

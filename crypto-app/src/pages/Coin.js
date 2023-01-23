@@ -7,6 +7,8 @@ import {
   Chart as ChartJS,
   CategoryScale,
   LinearScale,
+  LogarithmicScale,
+  BarElement,
   PointElement,
   LineElement,
   Title,
@@ -20,6 +22,9 @@ import moment from "moment";
 ChartJS.register(
   CategoryScale,
   LinearScale,
+  LogarithmicScale,
+  LineElement,
+  BarElement,
   PointElement,
   LineElement,
   Title,
@@ -52,7 +57,7 @@ const Coin = () => {
   useEffect(() => {
     async function History() {
       const resultHistory = await axios.get(
-        `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=90&interval=daily`
+        `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=730&interval=daily`
       );
 
       setPriceHistory(resultHistory.data);
@@ -83,12 +88,57 @@ const Coin = () => {
     ],
   };
 
+  //Multiaxis line chart
+  const options3 = {
+    responsive: true,
+
+    scales: {
+      y: {
+        type: "linear",
+        display: true,
+        position: "left",
+      },
+      y1: {
+        type: "logarithmic",
+        display: true,
+        position: "right",
+        grid: {
+          drawOnChartArea: false,
+        },
+      },
+    },
+  };
+  //multiaxis data
+  const dataMultiaxis = {
+    labels: onlyPrice?.map((item) => moment(item.x).format("MMM DD")),
+    datasets: [
+      {
+        label: coin?.name,
+        data: onlyPrice?.map((price) => price.y),
+        borderColor: "rgb(4, 10, 84)",
+        backgroundColor: "rgba(4, 10, 84, 0.5)",
+        yAxisID: "y",
+      },
+      {
+        label: "Portfolio value usd",
+        data: onlyPrice?.map((price) => price.y * 80000),
+        borderColor: "rgb(58, 135, 7)",
+        backgroundColor: "rgba(58, 135, 7, 0.5)",
+        yAxisID: "y1",
+      },
+    ],
+  };
+
   console.log("x and y", onlyPrice);
   return (
     <div className="coin-container">
-      <div className="coin__name">{coin?.name}</div>
       <div className="coin-pricechart">
-        <Line options={options} data={data} />
+        {/* <Line options={options} data={data} /> */}
+        <Line options={options3} data={dataMultiaxis} />;
+      </div>
+      <div className="coin-info">
+        <div className="coin__name">{coin?.name}</div>
+        <p>Track your coin and portfolio value in usd.</p>
       </div>
     </div>
   );

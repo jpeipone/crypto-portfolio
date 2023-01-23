@@ -1,26 +1,37 @@
 .navbar-container {
-  height: 100px;
+  height: 2.5rem;
   width: 100%;
-  background-color: black;
+  background-color: white;
+  border-bottom-style: solid;
+  border-bottom-color: black;
+
   display: flex;
   align-items: center;
   z-index: 9000;
   position: relative;
-  justify-content: space-between;
 }
-
+.navbar-link--wrapper {
+  display: flex;
+  width: 60%;
+  justify-content: space-evenly;
+}
 .navbar-link {
   text-decoration: none;
-  color: white;
+  color: black;
   font-weight: bold;
+  justify-content: space-evenly;
+}
+.navbar-link:hover {
+  color: orangered;
 }
 
 .navbar-logo {
   margin-left: 1em;
+  color: black;
 }
 
 .navbar-link {
-  font-size: 1.5em;
+  font-size: 1em;
   margin-right: 1em;
   cursor: pointer;
 }

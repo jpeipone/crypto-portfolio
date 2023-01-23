@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+
 import axios from "axios";
 import "./CoinTable.css";
+import { Diversity1TwoTone } from "@mui/icons-material";
 
 const CoinTable = () => {
   const [coinsInfo, setCoinsInfo] = useState([]);
@@ -23,20 +26,29 @@ const CoinTable = () => {
   } */
   return (
     <div className="coin-table-container">
-      CoinTable
+      Top 20 crypto currency
       {coinsInfo.map((coinsInfo) => (
-        <div className="table__coins" key={coinsInfo?.id}>
-          <div className="table__row">
-            <div className="coin__ranking"> {coinsInfo?.market_cap_rank}</div>
-            <img
-              className="coin__image"
-              src={coinsInfo?.image}
-              alt={coinsInfo?.name ? coinsInfo?.name : "coin symbol"}
-            ></img>
-            <div className="coin__name"> {coinsInfo?.name} </div>
-            <div className="coin__price"> {coinsInfo?.current_price} </div>
+        <Link to={`/coins/${coinsInfo?.id}`} className="coin-linkitems">
+          <div className="table__coins" key={coinsInfo?.id}>
+            <div className="table__row">
+              <div className="coin__ranking"> {coinsInfo?.market_cap_rank}</div>
+              <img
+                className="coin__image"
+                src={coinsInfo?.image}
+                alt={coinsInfo?.name ? coinsInfo?.name : "coin symbol"}
+              ></img>
+              <div className="coin__name"> {coinsInfo?.name} </div>
+              <div className="coin__price"> ${coinsInfo?.current_price} </div>
+              <div
+                className={
+                  coinsInfo?.price_change_24h > 0 ? "greenday" : "redday"
+                }
+              >
+                {coinsInfo?.price_change_24h}
+              </div>
+            </div>
           </div>
-        </div>
+        </Link>
       ))}
     </div>
   );

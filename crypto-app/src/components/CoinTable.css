@@ -1,16 +1,44 @@
+.coin-table-container {
+  padding: 1em;
+  width: 80%;
+}
 .table__row {
   display: flex;
   align-items: center;
-  border-bottom-color: black;
-  font-weight: bold;
+  border-bottom-style: solid;
+  border-bottom-color: lightgrey;
+
   padding: 1em;
+}
+.coin__ranking {
+  width: 10px;
+  margin-right: 1em;
 }
 
 .coin__image {
   height: 50px;
+  margin-right: 1.5em;
 }
 
-.table__name {
+.coin__name {
   color: black;
-  font-size: 2em;
+  font-weight: bold;
+  width: 130px;
+  font-size: 1.5em;
+  margin-right: 2em;
+}
+
+.coin__price {
+  color: black;
+  font-size: 1.5em;
+  margin-right: 2em;
+  width: 100px;
+}
+
+.redday {
+  color: red;
+}
+
+.greenday {
+  color: green;
 }
