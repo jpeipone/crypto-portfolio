@@ -10,12 +10,15 @@ td {
   border-color: black;
   font-weight: bold;
   font-size: 1em;
-
   padding: 1em;
 }
 
+td {
+  align-items: center;
+}
+
 tr:nth-child(even) {
-  background-color: lightgray;
+  background-color: #dadada;
 }
 
 .redday {
@@ -24,4 +27,8 @@ tr:nth-child(even) {
 
 .greenday {
   color: green;
+}
+
+.coin__image {
+  height: 50px;
 }

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import "./Table.css";
 
 const Table = () => {
   const [coinsInfo, setCoinsInfo] = useState([]);
-
+  ///coins/:id
   useEffect(() => {
     axios
       .get(
@@ -30,24 +31,26 @@ const Table = () => {
         {coinsInfo.map((coinsInfo) => {
           return (
             <tr key={coinsInfo?.id}>
-              <td>{coinsInfo?.market_cap_rank}</td>
-              <td>
-                {" "}
-                <img
-                  className="coin__image"
-                  src={coinsInfo?.image}
-                  alt={coinsInfo?.name ? coinsInfo?.name : "coin symbol"}
-                ></img>
-              </td>
-              <td>{coinsInfo?.name}</td>
-              <td>{coinsInfo?.current_price}$</td>
-              <td
-                className={
-                  coinsInfo?.price_change_24h > 0 ? "greenday" : "redday"
-                }
-              >
-                {coinsInfo?.price_change_24h}
-              </td>
+              <Link to={`/coins/${coinsInfo?.id}`} className="coin-linkitems">
+                <td>{coinsInfo?.market_cap_rank}</td>
+                <td>
+                  {" "}
+                  <img
+                    className="coin__image"
+                    src={coinsInfo?.image}
+                    alt={coinsInfo?.name ? coinsInfo?.name : "coin symbol"}
+                  ></img>
+                </td>
+                <td>{coinsInfo?.name}</td>
+                <td>{coinsInfo?.current_price}$</td>
+                <td
+                  className={
+                    coinsInfo?.price_change_24h > 0 ? "greenday" : "redday"
+                  }
+                >
+                  {coinsInfo?.price_change_24h}
+                </td>
+              </Link>
             </tr>
           );
         })}

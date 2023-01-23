@@ -1,7 +1,7 @@
 .navbar-container {
   height: 100px;
   width: 100%;
-  background-color: lightgray;
+  background-color: black;
   display: flex;
   align-items: center;
   z-index: 9000;
@@ -9,9 +9,9 @@
   justify-content: space-between;
 }
 
-a {
+.navbar-link {
   text-decoration: none;
-  color: black;
+  color: white;
   font-weight: bold;
 }
 

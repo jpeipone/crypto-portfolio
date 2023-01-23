@@ -7,7 +7,7 @@ import Homepage from "./pages/Homepage";
 import Coin from "./pages/Coin";
 import { Button } from "@mui/material";
 import { AccessAlarmIcon } from "@mui/icons-material";
-import CoinTable from "./components/CoinTable";
+
 import Navbar from "./components/Navbar/Navbar";
 //https://www.youtube.com/watch?v=QA6oTpMZp84
 
