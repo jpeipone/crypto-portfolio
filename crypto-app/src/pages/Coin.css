@@ -1,5 +1,5 @@
 .coin-container {
-  padding: 1em;
+  padding: 2em;
   width: 100%;
   display: flex;
 }
@@ -10,9 +10,32 @@
 
 .coin-info {
   padding: 1em;
+  border: solid;
+  border-color: lightgray;
+  border-radius: 7%;
+  line-height: 1.5;
+  width: 300px;
 }
 
-.coin__name {
-  font-size: 2em;
-  font-weight: bold;
+@media only screen and (max-width: 1000px) {
+  .coin-container {
+    flex-direction: column;
+    padding: 0.5em;
+  }
+  .coin-pricechart {
+    margin-top: 1.5rem;
+  }
+  .coin-info {
+    margin-top: 1.5rem;
+    width: 600px;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .coin-pricechart {
+    width: 95%;
+  }
+  .coin-info {
+    width: 350px;
+  }
 }

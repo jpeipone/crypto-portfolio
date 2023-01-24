@@ -36,6 +36,7 @@ const Coin = () => {
   const { id } = useParams();
   console.log({ id });
   const [coin, setCoin] = useState();
+  const [portfolio, setPortfolio] = useState(0);
 
   useEffect(() => {
     async function Data() {
@@ -109,6 +110,7 @@ const Coin = () => {
     },
   };
   //multiaxis data
+
   const dataMultiaxis = {
     labels: onlyPrice?.map((item) => moment(item.x).format("MMM DD")),
     datasets: [
@@ -121,7 +123,7 @@ const Coin = () => {
       },
       {
         label: "Portfolio value usd",
-        data: onlyPrice?.map((price) => price.y * 80000),
+        data: onlyPrice?.map((price) => price.y * portfolio),
         borderColor: "rgb(58, 135, 7)",
         backgroundColor: "rgba(58, 135, 7, 0.5)",
         yAxisID: "y1",
@@ -130,15 +132,42 @@ const Coin = () => {
   };
 
   console.log("x and y", onlyPrice);
+  console.log("porfolio given: ", portfolio);
+  console.log("current price", coin?.market_data?.current_price);
   return (
-    <div className="coin-container">
-      <div className="coin-pricechart">
-        {/* <Line options={options} data={data} /> */}
-        <Line options={options3} data={dataMultiaxis} />;
-      </div>
-      <div className="coin-info">
-        <div className="coin__name">{coin?.name}</div>
-        <p>Track your coin and portfolio value in usd.</p>
+    <div className="coin">
+      <input name="coin id" onChange={(event) => (id = event.target.value)} />
+      <div className="coin-container">
+        <div className="coin-pricechart">
+          {/* <Line options={options} data={data} /> */}
+          <Line options={options3} data={dataMultiaxis} />
+        </div>
+        <div className="coin-info">
+          <h2>{coin?.name}</h2>
+          <div className="coin__value">
+            current value: ${coin?.market_data?.current_price?.usd}
+          </div>
+          <div className="coin__ath">
+            ATH value: ${coin?.market_data?.ath?.usd}
+          </div>
+          <br />
+          <h2>Portfolio</h2>
+          <p>Enter amount of coins:</p>
+
+          <input
+            value={portfolio}
+            name="coin amount"
+            onChange={(event) => setPortfolio(event.target.value)}
+          />
+
+          <div className="portfolio__currentvalue">
+            current value: ${coin?.market_data?.current_price?.usd * portfolio}
+          </div>
+          <div className="portfolio__athvalue">
+            ATH value: ${coin?.market_data?.ath?.usd * portfolio}
+          </div>
+          <div className="coins__held">coins held: {portfolio}</div>
+        </div>
       </div>
     </div>
   );

@@ -41,7 +41,7 @@ const CoinTable = () => {
               <div className="coin__price"> ${coinsInfo?.current_price} </div>
               <div
                 className={
-                  coinsInfo?.price_change_24h > 0 ? "greenday" : "redday"
+                  coinsInfo?.price_change_24h >= 0 ? "greenday" : "redday"
                 }
               >
                 {coinsInfo?.price_change_24h}
