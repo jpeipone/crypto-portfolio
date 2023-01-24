@@ -37,34 +37,37 @@ const Coin = () => {
   console.log({ id });
   const [coin, setCoin] = useState();
   const [portfolio, setPortfolio] = useState(0);
+  const [priceHistory, setPriceHistory] = useState();
+  const [idcrypto, setIdCrypto] = useState(id);
+  const [message, setMessage] = useState();
+  console.log("!!!!!!!!!!!!!!!!!!!", idcrypto);
 
   useEffect(() => {
     async function Data() {
       const resultCoin = await axios.get(
-        `https://api.coingecko.com/api/v3/coins/${id}?tickers=true&market_data=true`
+        `https://api.coingecko.com/api/v3/coins/${idcrypto}?tickers=true&market_data=true`
       );
 
       setCoin(resultCoin.data);
     }
     Data();
-  }, [id]);
+  }, [idcrypto]);
   console.log("coin/id info: ", coin);
 
   //historic price data usd
   // chart libray: https://react-chartjs-2.js.org/
   // https://momentjs.com/
-  const [priceHistory, setPriceHistory] = useState();
 
   useEffect(() => {
     async function History() {
       const resultHistory = await axios.get(
-        `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=730&interval=daily`
+        `https://api.coingecko.com/api/v3/coins/${idcrypto}/market_chart?vs_currency=usd&days=730&interval=daily`
       );
 
       setPriceHistory(resultHistory.data);
     }
     History();
-  }, [id]);
+  }, [idcrypto]);
   console.log("coin price history: ", priceHistory);
 
   const onlyPrice = priceHistory?.prices.map((value) => ({
@@ -74,19 +77,6 @@ const Coin = () => {
 
   const options = {
     responsivie: true,
-  };
-
-  //data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
-  const data = {
-    labels: onlyPrice?.map((item) => moment(item.x).format("MMM DD")),
-    datasets: [
-      {
-        fill: true,
-        label: coin?.name,
-        data: onlyPrice?.map((price) => price.y),
-        borderColor: "rgb(0,0,0)",
-      },
-    ],
   };
 
   //Multiaxis line chart
@@ -134,12 +124,33 @@ const Coin = () => {
   console.log("x and y", onlyPrice);
   console.log("porfolio given: ", portfolio);
   console.log("current price", coin?.market_data?.current_price);
+
+  //input coin name
+  const handleChange = (event) => {
+    setMessage(event.target.value);
+  };
+
+  const handleClick = (event) => {
+    event.preventDefault();
+
+    setIdCrypto(message);
+  };
+
   return (
     <div className="coin">
-      <input name="coin id" onChange={(event) => (id = event.target.value)} />
+      <div className="input-container">
+        <input
+          className="input-coin"
+          type="text"
+          id="message"
+          name="message"
+          onChange={handleChange}
+          value={message}
+        />
+        <button onClick={handleClick}>Search</button>
+      </div>
       <div className="coin-container">
         <div className="coin-pricechart">
-          {/* <Line options={options} data={data} /> */}
           <Line options={options3} data={dataMultiaxis} />
         </div>
         <div className="coin-info">

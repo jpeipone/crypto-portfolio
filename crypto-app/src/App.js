@@ -21,7 +21,6 @@ function App() {
     <div>
       <Router>
         <Navbar />
-        <Header />
 
         <Routes>
           <Route path="/" element={<CoinTable />} />
@@ -33,6 +32,7 @@ function App() {
         <Button variant="contained">Contained</Button>
         <Button variant="outlined">Outlined</Button> */}
       </Router>
+      <Header />
     </div>
   );
 }

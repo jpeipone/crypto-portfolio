@@ -39,3 +39,20 @@
     width: 350px;
   }
 }
+
+.input-container {
+  margin-left: 2em;
+  margin-top: 2em;
+}
+button {
+  background-color: Blue;
+  color: white;
+  height: 2em;
+  width: 5em;
+  border: none;
+}
+
+input {
+  height: 2em;
+  width: 20em;
+}
