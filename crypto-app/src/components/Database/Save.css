@@ -1,0 +1,10 @@
+.btn__save {
+  margin-top: 1em;
+  color: white;
+  border: none;
+  background-color: blue;
+  width: 5em;
+  height: 2em;
+  cursor: pointer;
+  border-radius: 4px;
+}

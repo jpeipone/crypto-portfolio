@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import "./CoinTable.css";
 import { Diversity1TwoTone } from "@mui/icons-material";
+import Header from "./Header";
 
 const CoinTable = () => {
   const [coinsInfo, setCoinsInfo] = useState([]);
@@ -18,8 +19,8 @@ const CoinTable = () => {
       })
       .catch((error) => console.log(error));
   }, []);
-  console.log("coinsss table: ", coinsInfo);
-  console.log("coin name: ", coinsInfo?.name);
+  //  console.log("coinsss table: ", coinsInfo);
+  // console.log("coin name: ", coinsInfo?.name);
 
   /*  if (!coinsInfo) {
     return null;
@@ -50,6 +51,7 @@ const CoinTable = () => {
           </div>
         </Link>
       ))}
+      <Header />
     </div>
   );
 };

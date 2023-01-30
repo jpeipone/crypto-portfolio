@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import "./Coin.css";
 
@@ -18,6 +18,10 @@ import {
 import { Line } from "react-chartjs-2";
 
 import moment from "moment";
+import { UserContext } from "../ContextUser";
+import Save from "../components/Database/Save";
+import Delete from "../components/Database/Delete";
+import Header from "../components/Header";
 
 ChartJS.register(
   CategoryScale,
@@ -36,11 +40,16 @@ const Coin = () => {
   const { id } = useParams();
   console.log({ id });
   const [coin, setCoin] = useState();
-  const [portfolio, setPortfolio] = useState(0);
+  const [portfolio, setPortfolio] = useState();
   const [priceHistory, setPriceHistory] = useState();
   const [idcrypto, setIdCrypto] = useState(id);
   const [message, setMessage] = useState();
-  console.log("!!!!!!!!!!!!!!!!!!!", idcrypto);
+
+  console.log("idcrypto is: ", idcrypto);
+
+  //Context
+  const { readData, setReadData, userdata, setUserdata } =
+    useContext(UserContext);
 
   useEffect(() => {
     async function Data() {
@@ -52,7 +61,7 @@ const Coin = () => {
     }
     Data();
   }, [idcrypto]);
-  console.log("coin/id info: ", coin);
+  // console.log("coin/id info: ", coin);
 
   //historic price data usd
   // chart libray: https://react-chartjs-2.js.org/
@@ -121,9 +130,9 @@ const Coin = () => {
     ],
   };
 
-  console.log("x and y", onlyPrice);
-  console.log("porfolio given: ", portfolio);
-  console.log("current price", coin?.market_data?.current_price);
+  // console.log("x and y", onlyPrice);
+  //  console.log("porfolio given: ", portfolio);
+  //  console.log("current price", coin?.market_data?.current_price);
 
   //input coin name
   const handleChange = (event) => {
@@ -136,6 +145,8 @@ const Coin = () => {
     setIdCrypto(message);
   };
 
+  console.log("coin.js passed from app.js:", readData?.coins[0].hodl);
+
   return (
     <div className="coin">
       <div className="input-container">
@@ -147,7 +158,9 @@ const Coin = () => {
           onChange={handleChange}
           value={message}
         />
-        <button onClick={handleClick}>Search</button>
+        <button className="btn__search" onClick={handleClick}>
+          search
+        </button>
       </div>
       <div className="coin-container">
         <div className="coin-pricechart">
@@ -170,7 +183,8 @@ const Coin = () => {
             name="coin amount"
             onChange={(event) => setPortfolio(event.target.value)}
           />
-
+          <Save id={`${id}`} portfolio={portfolio} />
+          <Delete id={`${id}`} />
           <div className="portfolio__currentvalue">
             current value: ${coin?.market_data?.current_price?.usd * portfolio}
           </div>
@@ -178,8 +192,13 @@ const Coin = () => {
             ATH value: ${coin?.market_data?.ath?.usd * portfolio}
           </div>
           <div className="coins__held">coins held: {portfolio}</div>
+          <div className="db__held">
+            Portfolio:{readData?.coins[0]?.id_coin} amount:
+            {readData?.coins[0]?.hodl}
+          </div>
         </div>
       </div>
+      <Header />
     </div>
   );
 };

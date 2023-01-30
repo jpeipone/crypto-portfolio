@@ -16,7 +16,7 @@ const Table = () => {
       })
       .catch((error) => console.log(error));
   }, []);
-  console.log("table: ", coinsInfo);
+  //  console.log("table: ", coinsInfo);
 
   return (
     <div className="table-container">

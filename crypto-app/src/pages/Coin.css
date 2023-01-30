@@ -44,12 +44,13 @@
   margin-left: 2em;
   margin-top: 2em;
 }
-button {
+.btn__search {
   background-color: Blue;
   color: white;
   height: 2em;
   width: 5em;
   border: none;
+  cursor: pointer;
 }
 
 input {

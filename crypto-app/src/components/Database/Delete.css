@@ -1,0 +1,10 @@
+.btn__delete {
+  margin-top: 1em;
+  color: white;
+  border: none;
+  background-color: red;
+  width: 5em;
+  height: 2em;
+  cursor: pointer;
+  border-radius: 4px;
+}

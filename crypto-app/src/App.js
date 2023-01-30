@@ -5,18 +5,68 @@ import CoinRow from "./components/CoinRow";
 import Table from "./components/Table";
 import Homepage from "./pages/Homepage";
 import Coin from "./pages/Coin";
-import { Button } from "@mui/material";
-import { AccessAlarmIcon } from "@mui/icons-material";
-import CoinTable from "./components/CoinTable";
 
+import CoinTable from "./components/CoinTable";
+import { useContext, useEffect, useState } from "react";
 import Navbar from "./components/Navbar/Navbar";
+
+//firebase
+import { app, database } from "./firebaseConfig";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+} from "firebase/auth";
+
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+
+import {
+  collection,
+  addDoc,
+  getFirestore,
+  getDocs,
+  getDoc,
+  doc,
+  setDoc,
+  updateDoc,
+  deleteDoc,
+  deleteField,
+} from "firebase/firestore";
+
+import ContextUser, { UserContext } from "./ContextUser";
+import Login from "./components/User/Login";
+
 //https://www.youtube.com/watch?v=QA6oTpMZp84
 
 //https://www.youtube.com/watch?v=fzxEECHnsvU
 
 //https://www.youtube.com/watch?v=0sY4fUi5dMM
 
+//https://www.youtube.com/watch?v=fgdpvwEWJ9M  <-firebase
+
+//https://www.youtube.com/watch?v=8NMJxyDwP6A&t=158s crypto/firestore
+
 function App() {
+  //email
+  const auth = getAuth();
+
+  //google
+  const provider = new GoogleAuthProvider();
+
+  //Context
+  const { readData, setReadData, userdata, setUserdata } =
+    useContext(UserContext);
+
+  //  const [userdata, setUserdata] = useState(null);
+  const [array, setArray] = useState([]);
+  // const [readData, setReadData] = useState();
+  const [username, setUsername] = useState();
+  const [password, setPassword] = useState();
+  const [coindb, setCoindb] = useState([]);
+
+  //const coinRef = doc(database, "users", userdata?.uid); //ONE USERS info
+
   return (
     <div>
       <Router>
@@ -27,12 +77,9 @@ function App() {
           <Route path="/about" element={<CoinRow />} />
           <Route path="/portfolio" element={<Coin />} />
           <Route path="/coins/:id" element={<Coin />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
-        {/*     <Button variant="text">Text</Button>
-        <Button variant="contained">Contained</Button>
-        <Button variant="outlined">Outlined</Button> */}
       </Router>
-      <Header />
     </div>
   );
 }

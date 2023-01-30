@@ -1,0 +1,57 @@
+.login-container {
+  width: 370px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: beige;
+}
+
+.login-input {
+  display: flex;
+  flex-direction: column;
+  padding: 2em;
+}
+
+.input__btn {
+  width: 8em;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+.login__error {
+  color: red;
+  font-weight: bold;
+}
+
+.btn__login {
+  margin-top: 3em;
+  color: white;
+  background-color: #181818;
+  height: 2em;
+  width: 8em;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+}
+
+.btn__logout {
+  margin-top: 3em;
+  color: white;
+  background-color: red;
+  height: 2em;
+  width: 8em;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+}
+
+.btn__register {
+  margin-top: 3em;
+  color: black;
+  background-color: beige;
+  height: 2em;
+  width: 8em;
+  cursor: pointer;
+  border-radius: 4px;
+}

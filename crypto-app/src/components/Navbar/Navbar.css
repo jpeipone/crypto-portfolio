@@ -26,8 +26,9 @@
 }
 
 .navbar-logo {
-  margin-left: 1em;
-  color: black;
+  margin-left: 2em;
+  font-weight: bold;
+  color: #cc0000;
 }
 
 .navbar-link {
