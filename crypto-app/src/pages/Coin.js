@@ -21,7 +21,6 @@ import moment from "moment";
 import { UserContext } from "../ContextUser";
 import Save from "../components/Database/Save";
 import Delete from "../components/Database/Delete";
-import Header from "../components/Header";
 
 ChartJS.register(
   CategoryScale,
@@ -198,7 +197,6 @@ const Coin = () => {
           </div>
         </div>
       </div>
-      <Header />
     </div>
   );
 };

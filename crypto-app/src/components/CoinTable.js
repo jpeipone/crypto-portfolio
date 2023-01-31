@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 
 import axios from "axios";
 import "./CoinTable.css";
-import { Diversity1TwoTone } from "@mui/icons-material";
-import Header from "./Header";
 
 const CoinTable = () => {
   const [coinsInfo, setCoinsInfo] = useState([]);
@@ -51,7 +49,6 @@ const CoinTable = () => {
           </div>
         </Link>
       ))}
-      <Header />
     </div>
   );
 };

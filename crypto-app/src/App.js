@@ -36,16 +36,7 @@ import {
 
 import ContextUser, { UserContext } from "./ContextUser";
 import Login from "./components/User/Login";
-
-//https://www.youtube.com/watch?v=QA6oTpMZp84
-
-//https://www.youtube.com/watch?v=fzxEECHnsvU
-
-//https://www.youtube.com/watch?v=0sY4fUi5dMM
-
-//https://www.youtube.com/watch?v=fgdpvwEWJ9M  <-firebase
-
-//https://www.youtube.com/watch?v=8NMJxyDwP6A&t=158s crypto/firestore
+import Footer from "./components/Footer/Footer";
 
 function App() {
   //email
@@ -80,6 +71,7 @@ function App() {
           <Route path="/login" element={<Login />} />
         </Routes>
       </Router>
+      <Footer />
     </div>
   );
 }

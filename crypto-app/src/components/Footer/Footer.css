@@ -1,0 +1,31 @@
+.footer-container {
+  background-color: #d3d3d3;
+  color: black;
+  width: 100%;
+  height: 250px;
+  text-align: center;
+  padding-top: 3em;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer__coingecko {
+  font-weight: bold;
+  font-size: 1em;
+}
+
+.footer-link--wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 3em;
+}
+
+.footer-link__item a {
+  color: black;
+  padding: 2em;
+  cursor: pointer;
+}
+
+.icon__link {
+  margin-right: 2em;
+}

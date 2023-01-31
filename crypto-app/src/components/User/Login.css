@@ -1,3 +1,8 @@
+.login {
+  background-color: white;
+  height: 700px;
+}
+
 .login-container {
   width: 370px;
   position: fixed;

@@ -81,43 +81,47 @@ const Login = () => {
   console.log("error true or false", error);
 
   return (
-    <div className="login-container">
-      <div className="login-input">
-        {registerError && (
-          <span className="login__error">fill email and password</span>
-        )}
-        {error && <span className="login__error">wrong email or password</span>}
-        <label className="input__label">email:</label>
-        <input
-          placeholder="Email"
-          name="username"
-          type="username"
-          className="input-username"
-          onChange={(e) => setUsername(e.target.value)}
-        />
+    <div className="login">
+      <div className="login-container">
+        <div className="login-input">
+          {registerError && (
+            <span className="login__error">fill email and password</span>
+          )}
+          {error && (
+            <span className="login__error">wrong email or password</span>
+          )}
+          <label className="input__label">email:</label>
+          <input
+            placeholder="Email"
+            name="username"
+            type="username"
+            className="input-username"
+            onChange={(e) => setUsername(e.target.value)}
+          />
 
-        <label className="input__label">password:</label>
-        <input
-          placeholder="Password"
-          name="password"
-          type="password"
-          className="input-password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        {!logged && (
-          <button className="btn__login" onClick={handleSignin}>
-            sign in
+          <label className="input__label">password:</label>
+          <input
+            placeholder="Password"
+            name="password"
+            type="password"
+            className="input-password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          {!logged && (
+            <button className="btn__login" onClick={handleSignin}>
+              sign in
+            </button>
+          )}
+          {logged && (
+            <button className="btn__logout" onClick={handleLogout}>
+              sign out
+            </button>
+          )}
+          <button className="btn__register" onClick={handleRegisterUser}>
+            register
           </button>
-        )}
-        {logged && (
-          <button className="btn__logout" onClick={handleLogout}>
-            sign out
-          </button>
-        )}
-        <button className="btn__register" onClick={handleRegisterUser}>
-          register
-        </button>
-        {/* <button onClick={readOneDatabase}>read</button> */}
+          {/* <button onClick={readOneDatabase}>read</button> */}
+        </div>
       </div>
     </div>
   );
