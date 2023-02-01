@@ -1,12 +1,25 @@
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../ContextUser";
 import { app, database } from "../../firebaseConfig";
-import { doc, setDoc } from "firebase/firestore";
+import {
+  doc,
+  setDoc,
+  Firestore,
+  FieldValue,
+  ArrayUnion,
+  arrayUnion,
+  updateDoc,
+} from "firebase/firestore";
 import "./Save.css";
+//import firebase from "firebase"; //firestore object eeds firebase maybe?
+import firebase from "firebase/compat/app";
 
 const Save = ({ id, portfolio }) => {
   console.log("save says idcrypto is", id);
   console.log("save says portfolio is", portfolio);
+
+  // const firestore = new FieldValue();
+  // const firestore_1 = require("firebase/firestore");
 
   let coinName = `${id}`;
   console.log("Coin string:", coinName);
@@ -14,10 +27,9 @@ const Save = ({ id, portfolio }) => {
   const { readData, setReadData, userdata, setUserdata } =
     useContext(UserContext);
   //add one to database
+  const coinRef = doc(database, "users", userdata?.uid);
   const addOneDatabase = async () => {
-    const coinRef = doc(database, "users", userdata?.uid);
-
-    await setDoc(
+    /*   await setDoc(
       coinRef,
       {
         favorites: {
@@ -26,7 +38,10 @@ const Save = ({ id, portfolio }) => {
         },
       },
       { merge: true }
-    );
+    ); */
+    await updateDoc(coinRef, {
+      favorites: arrayUnion(coinName),
+    });
   };
 
   return (
